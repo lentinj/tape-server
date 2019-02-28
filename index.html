@@ -19,19 +19,28 @@ pre.debug, pre.info, pre.trace { color: #666; }
     <script>
 var console = window.console || {};
 
+function add_message(msg_class, msg_text) {
+    var el;
+
+    el = document.createElement('PRE');
+    el.innerText = msg_text;
+    el.className = msg_class;
+    document.body.appendChild(el);
+}
+
 ['log', 'error', 'warn', 'dir', 'debug', 'info', 'trace'].forEach(function (method) {
     var old_method = console[method];
 
     console[method] = function (msg) {
-        var el;
-
         old_method.apply(this, arguments);
-        el = document.createElement('PRE');
-        el.innerText = msg;
-        el.className = method;
-        document.body.appendChild(el);
+        add_message(method, msg);
     };
 });
+
+window.onerror = function(message, source, lineno, colno, err) {
+    add_message('error', (err || {}).stack ? err.stack : message);
+    add_message('error', '*** Terminated ***');
+};
     </script>
     <script src="bundle.js"></script>
   </body>
