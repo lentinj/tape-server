@@ -33,7 +33,11 @@ function add_message(msg_class, msg_text) {
 
     console[method] = function (msg) {
         old_method.apply(this, arguments);
-        add_message(method, msg);
+        if (method === 'trace') {
+            add_message(method, (new Error(msg)).stack.replace('Error: ', ''));
+        } else {
+            add_message(method, msg);
+        }
     };
 });
 
