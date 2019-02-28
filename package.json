@@ -1,0 +1,22 @@
+{
+  "name": "tape-server",
+  "version": "0.9.0",
+  "description": "NodeJS server that will build/run tape tests in a browser",
+  "main": "index.js",
+  "bin": {
+    "tape-server": "index.js"
+  },
+  "repository": "http://github.com/lentinj/tape-server",
+  "author": "Jamie Lentin <jm@lentin.co.uk>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "NODE_PATH=lib jslint index.js"
+  },
+  "dependencies": {
+    "browserify": "^16.2.3",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "jslint": "^0.12.1"
+  }
+}
