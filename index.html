@@ -29,7 +29,7 @@ function add_message(msg_class, msg_text) {
 }
 
 ['log', 'error', 'warn', 'dir', 'debug', 'info', 'trace'].forEach(function (method) {
-    var old_method = console[method];
+    var old_method = console[method] || function () { return; };
 
     console[method] = function (msg) {
         old_method.apply(this, arguments);
