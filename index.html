@@ -23,9 +23,22 @@ function add_message(msg_class, msg_text) {
     var el;
 
     el = document.createElement('PRE');
-    el.innerText = msg_text;
+    el.innerText = to_string(msg_text);
     el.className = msg_class;
     document.body.appendChild(el);
+}
+
+function to_string(obj) {
+    if (obj.outerHTML) {
+        return obj.outerHTML;
+    }
+    if (Array.isArray(obj) || (window.NodeList && obj instanceof NodeList) || (window.HTMLCollection && obj instanceof HTMLCollection)) {
+        return obj.constructor.name + ': ' + JSON.stringify(Array.prototype.map.call(obj, to_string), null, 2);
+    }
+    if (typeof obj === 'object') {
+        return JSON.stringify(obj, null, 2);
+    }
+    return obj.toString();
 }
 
 ['log', 'error', 'warn', 'dir', 'debug', 'info', 'trace'].forEach(function (method) {
