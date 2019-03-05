@@ -10,7 +10,8 @@
   "author": "Jamie Lentin <jm@lentin.co.uk>",
   "license": "MIT",
   "scripts": {
-    "lint": "NODE_PATH=. jslint lib/*.js"
+    "test-browser": "NODE_PATH=. nodejs lib/index.js --port=8123 tests/*.js",
+    "lint": "NODE_PATH=. jslint lib/*.js tests/*.js"
   },
   "dependencies": {
     "browserify": "^16.2.3",
