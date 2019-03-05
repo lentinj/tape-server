@@ -16,7 +16,7 @@ console.log({a: "1 potato", b: 33});
 
 console.error("error");
 console.warn("warn");
-console.dir("dir");
-console.debug("debug");
 console.info("info");
+console.debug("debug");
+console.dir("dir");
 console.trace("trace");
