@@ -4,7 +4,7 @@
   "description": "NodeJS server that will build/run tape tests in a browser",
   "main": "lib/index.js",
   "bin": {
-    "tape-server": "index.js"
+    "tape-server": "lib/index.js"
   },
   "repository": "http://github.com/lentinj/tape-server",
   "author": "Jamie Lentin <jm@lentin.co.uk>",
