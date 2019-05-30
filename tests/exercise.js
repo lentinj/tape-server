@@ -1,5 +1,7 @@
 "use strict";
 /*jslint browser: true */
+var fs = require('fs');
+
 console.log("Hello");
 
 console.log("The following value is undefined:");
@@ -20,3 +22,5 @@ console.info("info");
 console.debug("debug");
 console.dir("dir");
 console.trace("trace");
+
+console.log(fs.readFileSync(__dirname + '/file-content.txt', 'utf8'));
