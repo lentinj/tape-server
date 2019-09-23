@@ -19,6 +19,7 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "jslint": "^0.12.1"
+    "jslint": "^0.12.1",
+    "tape": ">3.0.0"
   }
 }
