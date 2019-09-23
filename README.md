@@ -39,6 +39,19 @@ test('testing_a_thing', function (t) {
 }
 ```
 
+By default, both tape TAP output and any ``console.log()`` messages will be
+written to both the Javascript console and the document body.
+
+It doesn't seem to be possible to fully replicate the javascript console's
+output in the main page, in particular the sourcemap won't be resolved in
+tracebacks, and the source of any HTML elements will be displayed, rather than
+an interactive view. It's a useful enough approximation though.
+
+## Command-line options
+
+* ``--hide-console`` will stop writing ``console.log()``, etc output to the main page, but will still be visible in the javascript console.
+* ``--hide-tap`` will stop writing TAP output to the main page, but will still be visible in the javascript console.
+
 ## Reading files
 
 [brfs](https://www.npmjs.com/package/brfs) included in the browserify chain that
