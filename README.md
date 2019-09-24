@@ -52,17 +52,14 @@ an interactive view. It's a useful enough approximation though.
 * ``--hide-console`` will stop writing ``console.log()``, etc output to the main page, but will still be visible in the javascript console.
 * ``--hide-tap`` will stop writing TAP output to the main page, but will still be visible in the javascript console.
 
-## Reading files
+## Adding transforms
 
-[brfs](https://www.npmjs.com/package/brfs) included in the browserify chain that
-tape-server uses, so you can use the following to read files alongside your
-tests:
+Transforms can be added to the browserify chain used, e.g. [brfs](https://www.npmjs.com/package/brfs),
+by adding the following to your ``package.json``:
 
-    fs.readFileSync(__dirname + '/file-content.txt', 'utf8')
-
-Note that brfs includes files at compilation time, so any file reference cannot
-include any other variable than the ones it explicitly knows about, see
-documentation.
+    "browserify": {
+        "tape-server-transform": "brfs"
+    },
 
 ## License
 

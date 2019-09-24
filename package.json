@@ -15,7 +15,6 @@
     "lint": "NODE_PATH=. jslint lib/*.js tests/*.js"
   },
   "dependencies": {
-    "brfs": "^2.0.2",
     "browserify": "^16.2.3",
     "minimist": "^1.2.0"
   },
