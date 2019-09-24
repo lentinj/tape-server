@@ -10,7 +10,7 @@
   "author": "Jamie Lentin <jm@lentin.co.uk>",
   "license": "MIT",
   "scripts": {
-    "test": "tape ./tests/test_*.js && jslint */*.js",
+    "test": "NODE_PATH=. tape ./tests/test_*.js && jslint */*.js",
     "test-browser": "NODE_PATH=. nodejs lib/index.js --port=8123 tests/*.js",
     "lint": "NODE_PATH=. jslint lib/*.js tests/*.js"
   },
