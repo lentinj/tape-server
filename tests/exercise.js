@@ -36,7 +36,7 @@ function multi_line_function(x) {
 }
 
 var el = document.createElement('DIV');
-el.innerHTML = "<p>This is a <b>paragraph</b>.\n</p><p>There's stuff</p>"
+el.innerHTML = "<p>This is a <b>paragraph</b>.\n</p><p>There's stuff</p>";
 
 console.log("Functions:");
 console.log({
