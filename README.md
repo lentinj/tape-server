@@ -49,8 +49,7 @@ an interactive view. It's a useful enough approximation though.
 
 ## Command-line options
 
-* ``--hide-console`` will stop writing ``console.log()``, etc output to the main page, but will still be visible in the javascript console.
-* ``--hide-tap`` will stop writing TAP output to the main page, but will still be visible in the javascript console.
+* ``--hide-console`` will stop writing ``console.log()`` and TAP output to the main page, but will still be visible in the javascript console.
 
 ## Adding transforms
 

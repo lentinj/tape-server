@@ -7,6 +7,7 @@ if (!global.window) {
 }
 
 var pretty_print = require('lib/pretty_print.js').pretty_print;
+var logprintf = require('lib/pretty_print.js').logprintf;
 
 test('pretty_print', function (t) {
     t.equal(pretty_print(undefined), [
@@ -112,6 +113,51 @@ test('pretty_print:HTMLCollection', function (t) {
         '  <i style="display: inline-block; vertical-align: middle">&lt;input name=&quot;gelda&quot; value=&quot;x&quot;&gt;</i>',
         ']',
     ].join("\n"), "HTMLCollection printed like an array");
+
+    t.end();
+});
+
+test('logprintf', function (t) {
+    t.equal(logprintf("Hello <world>"), [
+        "Hello &lt;world&gt;"
+    ].join("\n"), "String printed out HTML-escaped");
+
+    t.equal(logprintf("Hello", "Is it me you're looking for?"), [
+        "Hello",
+        "Is it me you&#039;re looking for?",
+    ].join("\n"), "Multiple strings on multiple lines");
+
+    t.equal(logprintf({cows: ['bessie', 'freda']}, "pigs!"), [
+        '{',
+        '  &quot;cows&quot;: [',
+        '    &quot;bessie&quot;,',
+        '    &quot;freda&quot;',
+        '  ]',
+        '}',
+        'pigs!',
+    ].join("\n"), "Multiple objects multiple lines");
+
+    t.equal(logprintf("%s potato, %s potato, %3 potato, %s!", "one", "two", "four"), [
+        'one potato, two potato, %3 potato, four!',
+    ].join("\n"), "Munch arguments as we need them, unknown specifier doesn't consume argument");
+
+    // %c
+    t.equal(logprintf("one %cpotato, two %cpotato", "color: red", "color: green"), [
+        'one <span style="color: red">potato, two </span><span style="color: green">potato</span>'
+    ].join("\n"), "Added some colour");
+    t.equal(logprintf("%cbold%cblue, not bold", "font-weight: bold", "color: blue"), [
+        '<span style="font-weight: bold">bold</span><span style="color: blue">blue, not bold</span>',
+    ].join("\n"), "Stylings don't combine");
+
+    // %d
+    t.equal(logprintf("%d, %d, %d", 0x10, "9.6", "Nine"), [
+        '16, 9, NaN'
+    ].join("\n"), "Strings coerced, values rounded, NaN if it doesn't work");
+
+    // %f
+    t.equal(logprintf("%f, %f, %f", 0x10, "9.6", "Nine"), [
+        '16, 9.6, NaN'
+    ].join("\n"), "Strings coerced, values *not* rounded, NaN if it doesn't work");
 
     t.end();
 });

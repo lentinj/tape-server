@@ -52,3 +52,4 @@ console.info("info");
 console.debug("debug");
 console.dir("dir");
 console.trace("trace");
+console.log("%cbold%cblue, not bold", "font-weight: bold", "color: blue");
