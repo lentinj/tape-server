@@ -12,7 +12,8 @@
   "scripts": {
     "test": "NODE_PATH=. tape ./tests/test_*.js && jslint */*.js",
     "test-browser": "NODE_PATH=. nodejs lib/index.js --port=8123 tests/*.js",
-    "lint": "NODE_PATH=. jslint lib/*.js tests/*.js"
+    "lint": "NODE_PATH=. jslint lib/*.js tests/*.js",
+    "release": "release-it"
   },
   "dependencies": {
     "browserify": "^16.2.3",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "jslint": "^0.12.1",
-    "tape": ">3.0.0"
+    "tape": ">3.0.0",
+    "release-it": ">13.6.0"
   }
 }
