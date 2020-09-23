@@ -2,6 +2,9 @@
   "name": "tape-server",
   "version": "0.999.1",
   "description": "NodeJS server that will build/run tape tests in a browser",
+  "files": [
+    "lib/*.js"
+  ],
   "main": "lib/index.js",
   "bin": {
     "tape-server": "lib/index.js"
